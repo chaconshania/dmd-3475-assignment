@@ -10,7 +10,7 @@ let age = 23;
 
 // 3. Complete the sentence: "I'm taking this course because..."
 let whyImTakingThisCourse =
-  "I am taking this course because I want to improve my skills in JavaScript because I kinda forgot...";
+  "I want to improve my skills in JavaScript because I kinda forgot...";
 
 // 4. You're all done. Take a look at the code below to see how this all works.
 
