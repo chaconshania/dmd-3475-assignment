@@ -3,34 +3,37 @@
  */
 
 // 1. Change the value to your first name:
-let firstName = 'Simon';
+let firstName = "Shania";
 
 // 2. Change the value to your age:
-let age = 72;
+let age = 23;
 
 // 3. Complete the sentence: "I'm taking this course because..."
-let whyImTakingThisCourse = "I want to learn how to code and build interactive websites.";
+let whyImTakingThisCourse =
+  "I am taking this course because I want to improve my skills in JavaScript because I kinda forgot...";
 
 // 4. You're all done. Take a look at the code below to see how this all works.
 
 // Get a reference to the button in index.html with the class "alert-btn"
-let button = document.querySelector('button.alert-btn');
+let button = document.querySelector("button.alert-btn");
 
 // Add an event listener for the click event to the button
-if(button !== null){
-    button.addEventListener('click', function() {
+if (button !== null) {
+  button.addEventListener("click", function () {
+    // Create a message to display in the alert
+    let message =
+      "My name is " +
+      firstName +
+      " and I am " +
+      age +
+      " years old. " +
+      "I am taking this course because " +
+      whyImTakingThisCourse;
 
-        // Create a message to display in the alert
-        let message = 'My name is ' + firstName + 
-                    ' and I am ' + age + ' years old. ' +
-                    'I am taking this course because ' + whyImTakingThisCourse;
-        
-        // Display an alert with the message we created
-        alert(message);
-    });
+    // Display an alert with the message we created
+    alert(message);
+  });
 }
-
-
 
 // Export the variables so we can use them in the tests
 export { firstName, age, whyImTakingThisCourse };
