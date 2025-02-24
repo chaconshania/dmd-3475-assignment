@@ -62,3 +62,8 @@ Extra credit: Properly round the dollars and cents that are returned by your fun
 function calculateTipPerPerson(billAmount, tipPercentage, numberOfPeople) {
   return ((billAmount * (tipPercentage / 100)) / numberOfPeople).toFixed(2);
 }
+
+// calulateTotalPerPerson , add one per person / 100
+function calculateTotalPerPerson(billAmount, tipPercentage, numberOfPeople) {
+  return ((billAmount * (1 + tipPercentage / 100)) / numberOfPeople).toFixed(2);
+}
