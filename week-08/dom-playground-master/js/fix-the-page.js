@@ -12,11 +12,11 @@ document.body.style.background = "#69f";
 document.body.style.margin = "0px";
 
 // 2) Add the .page-wrapper class
-document.querySelector("body > div").classList.add("page-wrapper");
+document.getElementsByClassName("page-wrapper");
 // 3) Add the .summary class
-document.getElementById("zen-summary").classList.add("summary");
+document.getElementById("zen-summary");
 // 4) Add the .sidebar class
-document.getElementsByClassName("sidebar").classList.add("sidebar");
+document.getElementsByClassName("sidebar");
 // 5) Add these links to the "Resources" <ul>
 let resources = [
   {
@@ -49,3 +49,17 @@ let resources = [
 
 // Hint: Loop over the resources array to build each list item.
 // E.g., <li><a href="someLink" title="someTitle">someText</a></li>
+let resourcesList = document.getElementById("resourceList");
+if (resourcesList) {
+  resources.forEach((resource) => {
+    let li = document.createElement("li");
+    let a = document.createElement("a");
+
+    a.href = resource.href;
+    a.title = resource.title;
+    a.innerHTML = resource.linkText;
+
+    li.appendChild(a);
+    resourcesList.appendChild(li);
+  });
+}
