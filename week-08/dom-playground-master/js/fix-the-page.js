@@ -27,22 +27,22 @@ let resources = [
   },
   {
     title: "Links to great sites with information on using CSS.",
-    href: "http://www.mezzoblue.com/zengarden/resources/",
+    href: "https://www.csszengarden.com/pages/resources/",
     linkText: '<abbr title="Cascading Style Sheets">CSS</abbr> Resources ',
   },
   {
     title: "A list of Frequently Asked Questions about the Zen Garden.",
-    href: "http://www.mezzoblue.com/zengarden/faq/",
+    href: "https://www.csszengarden.com/pages/faq/",
     linkText: '<abbr title="Frequently Asked Questions">FAQ</abbr> ',
   },
   {
     title: "Send in your own CSS file.",
-    href: "http://www.mezzoblue.com/zengarden/submit/",
+    href: "https://www.csszengarden.com/pages/submit/",
     linkText: "Submit a Design",
   },
   {
     title: "View translated versions of this page.",
-    href: "http://www.mezzoblue.com/zengarden/translations/",
+    href: "https://www.csszengarden.com/pages/translations/",
     linkText: "Translations",
   },
 ];
