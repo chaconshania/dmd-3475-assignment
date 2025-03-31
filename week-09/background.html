@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Background color changer</title>
+    <style></style>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+
+  <body>
+    <h1>Pick a color</h1>
+    <input type="color" id="colorPicker" />
+
+    <script>
+      //Javascript code
+      const colorPicker = document.getElementById("colorPicker");
+      function changeBackgroundColor(event) {
+        document.body.style.backgroundColor = event.target.value;
+      }
+      colorPicker.addEventListener("input", changeBackgroundColor);
+      colorPicker.addEventListener("change", changeBackgroundColor);
+    </script>
+  </body>
+</html>
