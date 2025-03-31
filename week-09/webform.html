@@ -33,6 +33,20 @@
     </form>
     <script>
       //Javascript code
+      const form = document.getElementById("contactForm");
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (
+          !form.name.value ||
+          !form.email.value ||
+          !form.subject.value ||
+          !form.message.value
+        ) {
+          alert("All fields are required.");
+        } else {
+          alert("Form submitted successfully!");
+        }
+      });
     </script>
   </body>
 </html>
