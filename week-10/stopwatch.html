@@ -3,11 +3,39 @@
   <head>
     <meta charset="utf-8" />
     <title>Stopwatch</title>
-    <style></style>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+        height: 100vh;
+      }
+      .buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        button {
+          width: 300px;
+        }
+      }
+      #time p {
+        font-size: 5vh;
+      }
+    </style>
     <link rel="stylesheet" href="../styles.css" />
   </head>
-
   <body>
+    <div id="time"><p>00:00</p></div>
+    <div class="buttons">
+      <button id="start" class="start">Start</button>
+      <button id="stop" class="Stop">Stop</button>
+      <button id="reset" class="reset">Reset</button>
+    </div>
     <script></script>
   </body>
 </html>
