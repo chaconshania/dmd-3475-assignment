@@ -23,19 +23,63 @@
           width: 300px;
         }
       }
-      #time p {
+      #display {
         font-size: 5vh;
       }
     </style>
     <link rel="stylesheet" href="../styles.css" />
   </head>
   <body>
-    <div id="time"><p>00:00</p></div>
+    <div id="display"><h1>00:00</h1></div>
     <div class="buttons">
       <button id="start" class="start">Start</button>
-      <button id="stop" class="Stop">Stop</button>
+      <button id="stop" disabled class="Stop">Stop</button>
       <button id="reset" class="reset">Reset</button>
     </div>
-    <script></script>
+    <script>
+      let seconds = 0;
+      let interval = null;
+
+      const display = document.getElementById("display");
+      const start = document.getElementById("start");
+      const stop = document.getElementById("stop");
+      const reset = document.getElementById("reset");
+
+      function updateDisplay() {
+        const mins = String(Math.floor(seconds / 60)).padStart(2, "0");
+        const secs = String(seconds % 60).padStart(2, "0");
+        display.textContent = `${mins}:${secs}`;
+      }
+
+      function startTimer() {
+        if (!interval) {
+          interval = setInterval(() => {
+            seconds++;
+            updateDisplay();
+          }, 1000);
+          start.disabled = true;
+          stop.disabled = false;
+        }
+      }
+
+      function stopTimer() {
+        clearInterval(interval);
+        interval = null;
+        start.disabled = false;
+        stop.disabled = true;
+      }
+
+      function resetTimer() {
+        stopTimer();
+        seconds = 0;
+        updateDisplay();
+      }
+
+      start.addEventListener("click", startTimer);
+      stop.addEventListener("click", stopTimer);
+      reset.addEventListener("click", resetTimer);
+
+      updateDisplay();
+    </script>
   </body>
 </html>
