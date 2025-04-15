@@ -3,13 +3,31 @@
   <head>
     <meta charset="utf-8" />
     <title>Events: Task 1</title>
-    <style></style>
+    <style>
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 500px;
+      }
+    </style>
     <link rel="stylesheet" href="../styles.css" />
   </head>
 
   <body>
     <h1>Send Email</h1>
+    <form id="emailForm" novalidate>
+      <label for="to">Email:</label>
+      <input type="email" id="to" name="to" required />
 
+      <label for="subject">Subject:</label>
+      <input type="text" id="subject" name="subject" required />
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button type="submit">Send</button>
+    </form>
     <script></script>
   </body>
 </html>
