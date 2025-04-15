@@ -27,7 +27,32 @@
       <textarea id="message" name="message" rows="5" required></textarea>
 
       <button type="submit">Send</button>
+
+      <div id="responseMessage" class="message"></div>
     </form>
-    <script></script>
+    <script>
+      const form = document.getElementById("emailForm");
+      const responseMessage = document.getElementById("responseMessage");
+
+      form.addEventListener("submit", function (submit) {
+        const to = document.getElementById("to").value;
+        const subject = document.getElementById("subject").value;
+        const message = document.getElementById("message").value;
+
+        fetch("https://bdaley.npkn.net/dmd-formmail/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            key1: "value1",
+            key2: "value2",
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => console.log(data))
+          .catch((error) => console.error("Error:", error));
+      });
+    </script>
   </body>
 </html>
