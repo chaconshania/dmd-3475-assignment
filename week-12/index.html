@@ -2,7 +2,7 @@
 <html lang="en-US">
   <head>
     <meta charset="utf-8" />
-    <title>Events: Task 1</title>
+    <title>Send Email</title>
     <style>
       form {
         display: flex;
@@ -20,12 +20,11 @@
         color: red;
       }
     </style>
-    <link rel="stylesheet" href="../styles.css" />
   </head>
 
   <body>
     <h1>Send Email</h1>
-    <form id="emailForm" class="emailForm" novalidate>
+    <form id="emailForm" novalidate>
       <label for="to">Email:</label>
       <input type="email" id="to" name="to" required />
 
@@ -39,11 +38,12 @@
 
       <div id="responseMessage" class="message"></div>
     </form>
+
     <script>
       const form = document.getElementById("emailForm");
       const responseMessage = document.getElementById("responseMessage");
 
-      form.addEventListener("submit", function (submit) {
+      form.addEventListener("submit", function (event) {
         event.preventDefault();
 
         const to = document.getElementById("to").value;
@@ -62,13 +62,29 @@
           }),
         })
           .then(function (response) {
-            return response.json();
-          })
-          .then(function (data) {
-            console.log(data);
+            return response.json().then(function (data) {
+              if (response.status === 200) {
+                responseMessage.textContent = data.message;
+                responseMessage.className = "success";
+              } else if (response.status === 405) {
+                responseMessage.textContent = data.error;
+                responseMessage.className = "error";
+              } else if (response.status === 422) {
+                let errorMessages = "";
+                for (let key in data.errors) {
+                  errorMessages += data.errors[key].join(" ") + " ";
+                }
+                responseMessage.textContent = errorMessages.trim();
+                responseMessage.className = "error";
+              } else {
+                responseMessage.textContent = "Something went wrong.";
+                responseMessage.className = "error";
+              }
+            });
           })
           .catch(function (error) {
-            console.error("Error:", error);
+            responseMessage.textContent = "Error sending message.";
+            responseMessage.className = "error";
           });
       });
     </script>
