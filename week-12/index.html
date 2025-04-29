@@ -10,13 +10,22 @@
         gap: 10px;
         width: 500px;
       }
+      #responseMessage {
+        padding-top: 15px;
+      }
+      .success {
+        color: green;
+      }
+      .error {
+        color: red;
+      }
     </style>
     <link rel="stylesheet" href="../styles.css" />
   </head>
 
   <body>
     <h1>Send Email</h1>
-    <form id="emailForm" novalidate>
+    <form id="emailForm" class="emailForm" novalidate>
       <label for="to">Email:</label>
       <input type="email" id="to" name="to" required />
 
@@ -35,23 +44,32 @@
       const responseMessage = document.getElementById("responseMessage");
 
       form.addEventListener("submit", function (submit) {
+        event.preventDefault();
+
         const to = document.getElementById("to").value;
         const subject = document.getElementById("subject").value;
         const message = document.getElementById("message").value;
 
-        fetch("https://bdaley.npkn.net/dmd-formmail/", {
+        fetch("https://fake-mail-api.laravel.cloud/api/send", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            key1: "value1",
-            key2: "value2",
+            to: to,
+            subject: subject,
+            message: message,
           }),
         })
-          .then((response) => response.json())
-          .then((data) => console.log(data))
-          .catch((error) => console.error("Error:", error));
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (data) {
+            console.log(data);
+          })
+          .catch(function (error) {
+            console.error("Error:", error);
+          });
       });
     </script>
   </body>
